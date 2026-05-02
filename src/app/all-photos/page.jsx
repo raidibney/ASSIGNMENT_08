@@ -76,7 +76,7 @@ const AllPhotos = async () => {
 
                                
                                 <div className="mt-auto">
-                                    <Link href={`/courses/${course.id}`} className="w-full">
+                                    <Link href={`/all-photos/${course.id}`} className="w-full">
                                         <Button 
                                             className="w-full bg-slate-900 hover:bg-blue-600 text-white font-semibold rounded-xl transition-colors"
                                         >

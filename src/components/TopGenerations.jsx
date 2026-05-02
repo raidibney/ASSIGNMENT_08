@@ -75,14 +75,14 @@ const TopGenerations = async () => {
                                         <p className="text-xs text-gray-400 font-medium uppercase">Instructor</p>
                                         <p className="text-sm font-bold text-gray-700">{course.instructor}</p>
                                     </div>
-                                    <Link href={`/courses/${course.id}`}>
-                                        <Button 
-                                            size="sm" 
-                                            className="bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl"
-                                        >
-                                            View Details
-                                        </Button>
-                                    </Link>
+                                    <Link href={`/all-photos/${course.id}`}>
+    <Button 
+        size="sm" 
+        className="bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl"
+    >
+        View Details
+    </Button>
+</Link>
                                 </div>
                             </div>
                         </div>

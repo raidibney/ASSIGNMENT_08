@@ -6,7 +6,7 @@ import Link from "next/link";
 const Banner = () => {
   return (
     <div className="bg-[url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop')] h-[60vh] w-full bg-cover bg-no-repeat bg-center flex items-center rounded-lg shadow-2xl">
-      {/* Overlay: Using a blue/indigo tint to look more "Educational" */}
+     
       <div className="w-full h-full rounded-lg bg-indigo-950/60 flex items-center ">
         <div className="max-w-7xl mx-auto px-6 text-white">
           <h1 className="text-4xl md:text-6xl font-extrabold mb-4 max-w-3xl leading-tight">
@@ -17,7 +17,7 @@ const Banner = () => {
           </p>
 
           <div className="flex flex-wrap gap-4">
-            <Link href="/courses">
+            <Link href="/all-photos">
               <Button 
                 size="lg" 
                 className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 shadow-lg transition-transform hover:scale-105"
@@ -26,7 +26,7 @@ const Banner = () => {
               </Button>
             </Link>
 
-            <Link href="/mentors">
+            <Link href="/Instructors">
               <Button 
                 variant="bordered" 
                 size="lg" 
