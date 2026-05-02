@@ -1,18 +1,15 @@
 import React from 'react';
 
-/**
- * Top Instructors Section
- * Showcases the experts behind the courses to build user trust.
- */
+
 export default function Instructors() {
-  // Example data based on your "JSON Data Generation" requirement
+ 
   const instructors = [
     {
       id: 1,
       name: "John Doe",
       role: "Senior Web Developer",
       specialty: "React & Next.js",
-      image: "https://i.pravatar.cc/150?u=john", // Placeholder profile image
+      image: "https://i.pravatar.cc/150?u=john", 
     },
     {
       id: 2,
