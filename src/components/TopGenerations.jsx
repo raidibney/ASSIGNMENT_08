@@ -27,7 +27,7 @@ const TopGenerations = async () => {
                             Explore our most loved programs by students worldwide.
                         </p>
                     </div>
-                    <Link href="/courses">
+                    <Link href="/all-photos">
                         <Button variant="light" color="primary" className="font-bold">
                             View All Courses <ArrowRight size={18} />
                         </Button>
