@@ -15,6 +15,7 @@ import {
 import { authClient } from "@/lib/auth-client";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { GrGoogle } from "react-icons/gr";
 
 export default function SignInPage() {
   const router = useRouter();
@@ -45,7 +46,12 @@ export default function SignInPage() {
       }
     });
   };
-
+  // Handler for Google Sign-In
+ const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({ provider: "google" 
+      
+    });
+  };
   return (
     <Card className="border mx-auto w-125 py-10 mt-5">
       <ToastContainer position="top-right" autoClose={3000} />
@@ -89,6 +95,9 @@ export default function SignInPage() {
           </Button>
         </div>
       </Form>
+      <Button className="mt-4 items-center text-center" onClick={handleGoogleSignIn}>
+        <GrGoogle /> Sign In With Google
+      </Button>
     </Card>
   );
 }
