@@ -1,4 +1,4 @@
-// src/components/LearningTips.jsx
+
 "use client";
 
 import { Brain, Timer, Laptop } from "lucide-react";
