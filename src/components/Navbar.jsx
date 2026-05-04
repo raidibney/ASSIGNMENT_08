@@ -2,10 +2,13 @@
 
 import { authClient } from "@/lib/auth-client";
 import { Avatar, Button } from "@heroui/react";
+import { Menu, X } from "lucide-react"; // Make sure to install lucide-react or use your preferred icon library
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const userData = authClient.useSession();
   const user = userData.data?.user;
 
@@ -13,9 +16,24 @@ const Navbar = () => {
     await authClient.signOut();
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div className="sticky top-0 z-50 w-full border-b border-white/5 bg-blue-100 backdrop-blur-xl px-4">
       <nav className="flex justify-between items-center py-3 max-w-7xl mx-auto w-full">
+        {/* Left: Mobile Hamburger (Visible only on small screens) */}
+        <div className="md:hidden flex items-center">
+          <button 
+            onClick={toggleMenu} 
+            className="text-black p-2 focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
         {/* Logo Section */}
         <div className="flex gap-2.5 items-center group cursor-pointer">
           <div className="relative">
@@ -34,7 +52,7 @@ const Navbar = () => {
           </h3>
         </div>
 
-        {/* Center Links */}
+        {/* Center Links (Desktop Only) */}
         <ul className="hidden md:flex items-center gap-8 text-[13px] font-medium uppercase tracking-widest text-black">
           <li>
             <Link href={"/"} className="hover:text-red-700 transition-colors">Home</Link>
@@ -51,7 +69,7 @@ const Navbar = () => {
         <div className="flex items-center gap-5">
           {!user && (
             <ul className="flex items-center text-sm font-medium gap-5">
-              <li>
+              <li className="hidden sm:block">
                 <Link href={"/sign-up"} className="text-green-800-400 hover:text-green-400 transition-colors">
                   SignUp
                 </Link>
@@ -70,24 +88,21 @@ const Navbar = () => {
           {user && (
             <div className="flex items-center gap-4 animate-in fade-in zoom-in duration-300">
               <div className="flex items-center gap-3 bg-white/5 p-1 pr-3 rounded-full border border-white/10">
-               <Avatar
-      src={user?.image }
-        name={user?.name?.charAt(0).toUpperCase()}
-  
-        className="w-8 h-8 text-[14px] font-bold bg-linear-to-tr from-primary to-blue-500"
-     
-        color="primary"
-/>
+                <Avatar
+                  src={user?.image}
+                  name={user?.name?.charAt(0).toUpperCase()}
+                  className="w-8 h-8 text-[14px] font-bold bg-linear-to-tr from-primary to-blue-500"
+                  color="primary"
+                />
                 <span className="text-sm font-medium text-black hidden sm:inline-block">
                   {user?.name?.split(" ")[0]}
                 </span>
               </div>
               
               <Button 
-               
                 variant="flat"
                 size="sm"
-                className="font-bold rounded-full px-5 hover:after:opacity-100 ring-offset-black transition-all bg-red-600"
+                className="font-bold rounded-full px-5 hover:after:opacity-100 ring-offset-black transition-all bg-red-600 text-white"
                 onClick={handleSignOut}
               >
                 Signout
@@ -96,6 +111,28 @@ const Navbar = () => {
           )}
         </div>
       </nav>
+
+      {/* Mobile Menu Dropdown */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-blue-50 border-t border-black/5 py-4 animate-in slide-in-from-top duration-300">
+          <ul className="flex flex-col items-center gap-4 text-[13px] font-medium uppercase tracking-widest text-black">
+            <li>
+              <Link href={"/"} onClick={() => setIsMenuOpen(false)} className="hover:text-red-700">Home</Link>
+            </li>
+            <li>
+              <Link href={"/all-photos"} onClick={() => setIsMenuOpen(false)} className="hover:text-red-700">All Courses</Link>
+            </li>
+            <li>
+              <Link href={"/profile"} onClick={() => setIsMenuOpen(false)} className="hover:text-red-700">Profile</Link>
+            </li>
+            {!user && (
+               <li className="sm:hidden">
+                <Link href={"/sign-up"} onClick={() => setIsMenuOpen(false)} className="text-green-800 font-bold">SignUp</Link>
+              </li>
+            )}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
