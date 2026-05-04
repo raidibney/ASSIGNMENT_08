@@ -70,13 +70,14 @@ const Navbar = () => {
           {user && (
             <div className="flex items-center gap-4 animate-in fade-in zoom-in duration-300">
               <div className="flex items-center gap-3 bg-white/5 p-1 pr-3 rounded-full border border-white/10">
-                <Avatar
-                  src={user?.image || undefined}
-                  name={user?.name?.charAt(0).toUpperCase()}
-                  className="w-8 h-8 text-[14px] font-bold bg-gradient-to-tr from-primary to-blue-500 text-red-600"
-                  isBordered
-                  color="primary"
-                />
+               <Avatar
+      src={user?.image }
+        name={user?.name?.charAt(0).toUpperCase()}
+  
+        className="w-8 h-8 text-[14px] font-bold bg-linear-to-tr from-primary to-blue-500"
+     
+        color="primary"
+/>
                 <span className="text-sm font-medium text-black hidden sm:inline-block">
                   {user?.name?.split(" ")[0]}
                 </span>
