@@ -125,7 +125,7 @@ const Footer = () => {
             </p>
 
             <Link
-              href="/signup"
+              href="/all-photos"
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-full 
               bg-blue-600 text-white dark:bg-white dark:text-black 
               text-sm font-medium transition-all duration-200 

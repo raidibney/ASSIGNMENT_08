@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { use } from 'react';
 import { Star, Clock, BookOpen } from 'lucide-react';
 import { Button } from "@heroui/react";
 import Link from 'next/link';
