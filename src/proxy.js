@@ -19,5 +19,5 @@ export async function proxy(request) {
 
 export const config = {
     // Specifically protecting the profile route
-    matcher: ['/profile'],
+    matcher: ['/profile','/all-photos/:path'],
 }
